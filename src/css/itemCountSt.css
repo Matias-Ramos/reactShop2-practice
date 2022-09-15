@@ -1,0 +1,17 @@
+.itemCountCardContainer { color:white; }
+
+.itemCountCardContainer .card-body 
+{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+/* "ITEMCOUNT" */
+.itemCountCardContainer span 
+{ 
+    text-align: center; 
+    margin-bottom: 0.5rem;
+}
+
+.desiredAmountSpan { margin: 0px 1rem; }
