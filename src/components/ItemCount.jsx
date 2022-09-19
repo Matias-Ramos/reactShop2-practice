@@ -17,7 +17,6 @@ function ItemCount({initial, stock, onAdd, onSubtract})
          bg="dark" variant="dark"
          style={{ display: 'inline-block' }}>
             <Card.Body>
-                <span>ITEMCOUNT<br/></span>
                 <div>
                     <Button variant="primary" onClick={ () => onSubtract(desiredAmount, setDesiredAmount) }> - </Button>
                     <span className="desiredAmountSpan"> {desiredAmount} </span>

@@ -3,4 +3,7 @@
     margin: 1rem;
     padding:2rem;
     border:1px solid black;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }

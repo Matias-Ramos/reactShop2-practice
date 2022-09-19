@@ -1,35 +1,26 @@
 //style
 import "../css/itemListContainerSt.css";
-//comp.
-import ItemCount from "./ItemCount";
+// import ItemCount from "./ItemCount";
+import getStock from "../data/Mock_Data";
+import ItemList from "./ItemList";
+//hooks
+import {useEffect, useState} from "react";
 
-//Funciones modificadoras
-let onAdd = (desiredAmount,setDesiredAmount, stock) => {
-  if(desiredAmount<stock)
-  setDesiredAmount(desiredAmount+1);
-}
-let onSubtract = (desiredAmount, setDesiredAmount) => {
-  if(desiredAmount>1)
-  setDesiredAmount(desiredAmount-1);
-}
+function ItemListContainer() {
+  
+  //state-var
+  const [productList, setProductList] = useState ( [] );
+  //set promise-value into state-var when the app renders.
+  useEffect( () => {
+    const stock = getStock(); //this returns a promise...
+    stock.then( arrayOfProducts => setProductList(arrayOfProducts) )
+  } ,[] )
 
-//Inmutabilidad para el inicializador
-const itemCountInitializer = 1;
-
-function ItemListContainer(prop) {
+    
   return (
-    <>
-      <div id="itemListContainer">
-        {prop.greeting}
-        <br/>
-        <br/>
-        <ItemCount 
-          initial={itemCountInitializer}
-          stock={3}
-          onAdd={onAdd}
-          onSubtract={onSubtract}/>
-        </div>
-    </>
+    <div id="itemListContainer">
+      <ItemList productList={productList}/>
+    </div>
   )
 }
 

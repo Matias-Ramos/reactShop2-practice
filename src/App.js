@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header>
         <NavBar />
-        <ItemListContainer greeting="Reserved container for products input."/>
+        <ItemListContainer />
       </header>
     </div>
   );

@@ -1,0 +1,12 @@
+#itemListContainer .productCard{
+    width:18rem;
+    min-width: 18rem;
+    display: inline-block;
+    text-align: center;
+    margin:2.2rem 1rem;
+}
+
+#itemListContainer .card-body{
+    display: flex;
+    flex-direction: column;
+}
