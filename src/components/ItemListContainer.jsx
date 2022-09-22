@@ -6,6 +6,7 @@ import ItemList from "./ItemList";
 //hooks
 import {useEffect, useState} from "react";
 
+
 function ItemListContainer() {
   
   //state-var
@@ -16,12 +17,30 @@ function ItemListContainer() {
     stock.then( arrayOfProducts => setProductList(arrayOfProducts) )
   } ,[] )
 
-    
   return (
     <div id="itemListContainer">
       <ItemList productList={productList}/>
     </div>
   )
+
+  //ASYNC AWAIT VERSION
+/*   useEffect( () => {
+    getData2();
+  },[] )
+
+  async function getData2()
+  {
+    try{
+      let promiseAnswer = await getStock();
+      setProductList(promiseAnswer);
+    }
+    catch (errorMsg) {
+      console.error(errorMsg);
+    }
+
+  } */
+    
+
 }
 
 export default ItemListContainer;
