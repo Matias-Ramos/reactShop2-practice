@@ -1,4 +1,3 @@
-import {Link} from "react-router-dom";
 //Componente de presentación
 import Item from "./Item";
 
@@ -16,16 +15,17 @@ function ItemList( {productList} ) {
         {
             productList.map( item => {
                 return(
-                <Link to={`/item/${item.id}`} key={item.id}>
                     <Item 
-                        product_name={item.product_name}
-                        price={item.price}
-                        organic={item.organic}
-                        stock={item.stock}
-                        onAdd={onAdd}
-                        onSubtract={onSubtract}
-                        itemCountInitializer={itemCountInitializer}/>
-                </Link>)
+                     id={item.id}
+                     key={item.id}
+                     product_name={item.product_name}
+                     price={item.price}
+                     organic={item.organic}
+                     stock={item.stock}
+                     onAdd={onAdd}
+                     onSubtract={onSubtract}
+                     itemCountInitializer={itemCountInitializer}/>
+                )
             })
         }
         </>
