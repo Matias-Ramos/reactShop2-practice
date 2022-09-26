@@ -1,0 +1,10 @@
+#navBar a 
+{
+    text-decoration:none;
+    color: #fafafa;
+}
+.btnNavBar
+{
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}

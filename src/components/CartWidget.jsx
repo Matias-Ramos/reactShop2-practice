@@ -1,8 +1,12 @@
+import { NavLink } from "react-router-dom";
+
 function CartWidget() {
   return (
     <>
-      <img src="https://icongr.am/simple/aerlingus.svg?size=40&color=ebffef&colored=false" className="img-fluid" />  
-      <span> TiendaMia </span>
+      <NavLink to="/">
+        <img src="https://icongr.am/simple/aerlingus.svg?size=40&color=ebffef&colored=false" className="img-fluid" alt="Brand icon" />  
+        <span> TiendaMia </span>
+      </NavLink>
     </>
     )
 }

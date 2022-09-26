@@ -1,5 +1,6 @@
 //hooks
 import {useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
 //data
 import {getProduct} from "../data/Mock_Data"
 //comp.
@@ -7,15 +8,17 @@ import ItemDetail from "./ItemDetail";
 
 function ItemDetailContainer() {
 
-    //state-var
+    //usePrms
+    const {productId} = useParams();
+
+    //useSt
     const [product, setProduct] = useState( {} );
 
     //value from database into state-var
-    let productIdToBeReturned = 0;
      useEffect( () => {
-        const item = getProduct(productIdToBeReturned);
+        const item = getProduct(productId);
         item.then( item => setProduct(item) );
-     }, [productIdToBeReturned] )
+     }, [productId] )
 
     return (
     <>

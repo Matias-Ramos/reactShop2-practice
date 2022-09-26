@@ -1,27 +1,61 @@
 //style
 import "../css/itemListContainerSt.css";
-// import ItemCount from "./ItemCount";
+//data
 import getStock from "../data/Mock_Data";
+//comp.
 import ItemList from "./ItemList";
 //hooks
 import {useEffect, useState} from "react";
+import {useParams} from "react-router-dom";
 
 
 function ItemListContainer() {
-  
-  //state-var
+   
+  //usePrms
+  const {categoryId} = useParams();
+
+  //useState
   const [productList, setProductList] = useState ( [] );
-  //set promise-value into state-var when the app renders.
+  
   useEffect( () => {
     const stock = getStock(); //this returns a promise...
-    stock.then( arrayOfProducts => setProductList(arrayOfProducts) )
-  } ,[] )
+
+    //conditional to define which values from the promise assign into the state-variable.
+    switch(categoryId)
+    {
+      case "fruits":
+        stock.then( arrayOfProducts => 
+          {
+            setProductList( arrayOfProducts.filter( product => product.isFruit) ); //t
+          })
+        break;
+
+      case "vegetables":
+        stock.then( arrayOfProducts => 
+          {
+            setProductList( arrayOfProducts.filter( product => !product.isFruit) ); //f
+          })
+        break;
+      
+      default:
+        stock.then( arrayOfProducts => setProductList(arrayOfProducts) );
+        break;
+    }
+    
+  } ,[categoryId] )
 
   return (
     <div id="itemListContainer">
       <ItemList productList={productList}/>
     </div>
-  )
+  ) 
+
+}
+
+export default ItemListContainer;
+
+
+
 
   //ASYNC AWAIT VERSION
 /*   useEffect( () => {
@@ -39,8 +73,3 @@ function ItemListContainer() {
     }
 
   } */
-    
-
-}
-
-export default ItemListContainer;
