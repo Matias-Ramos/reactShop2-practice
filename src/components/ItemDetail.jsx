@@ -3,12 +3,23 @@ import "../css/ItemDetailSt.css";
 //bts comp.
 import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
-
-
+//comp.
+import ItemCount from "./ItemCount";
+import {useState} from "react";
 
 
 function ItemDetail({product}) {
+
+    //Funciones modificadoras del ItemCount.jsx
+    let onAdd = (desiredAmount, stock) => desiredAmount<stock && setDesiredAmount(desiredAmount+1);
+    let onSubtract = desiredAmount => desiredAmount>1 && setDesiredAmount(desiredAmount-1);
+
+    //Inmutabilidad del inicializador para ItemCount.jsx
+    const itemCountInitializer = 1;
+
+    //Variable de estado
+    const [desiredAmount, setDesiredAmount] = useState(itemCountInitializer);
+    
     return (
         <div className="ItemDetail">
         <Card className="ItemDetailCard" style={{ width: '18rem' }}>
@@ -25,7 +36,11 @@ function ItemDetail({product}) {
                     <ListGroup.Item>Stock: {product.stock}</ListGroup.Item>
                 </ListGroup>
             <Card.Body>
-                <Button variant="primary">Comprar</Button>
+                <ItemCount 
+                desiredAmount={desiredAmount}
+                stock={product.stock} 
+                onAdd={onAdd}
+                onSubtract={onSubtract}/>
             </Card.Body>
         </Card>
         </div>

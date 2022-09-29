@@ -3,13 +3,11 @@ import "../css/itemCountSt.css";
 //bts
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-//hook
-import {useState} from "react";
+//comp
+import {Link} from "react-router-dom";
 
-function ItemCount({initial, stock, onAdd, onSubtract})
+function ItemCount({desiredAmount, stock, onAdd, onSubtract})
 {
-    const [desiredAmount, setDesiredAmount] = useState(initial);
-
     return (
         <>
         <Card
@@ -18,10 +16,13 @@ function ItemCount({initial, stock, onAdd, onSubtract})
          style={{ display: 'inline-block' }}>
             <Card.Body>
                 <div>
-                    <Button variant="primary" onClick={ () => onSubtract(desiredAmount, setDesiredAmount) }> - </Button>
+                    <Button variant="primary" onClick={ () => onSubtract(desiredAmount) }> - </Button>
                     <span className="desiredAmountSpan"> {desiredAmount} </span>
-                    <Button variant="primary" onClick={ () => onAdd(desiredAmount, setDesiredAmount, stock) }> + </Button>
+                    <Button variant="primary" onClick={ () => onAdd(desiredAmount, stock) }> + </Button>
                 </div>
+                <Link to={`/cart`}>
+                    <Button variant="success" className="mt-2"> Comprar! </Button>
+                </Link>
             </Card.Body>
         </Card>
         </>

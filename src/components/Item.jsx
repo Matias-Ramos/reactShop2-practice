@@ -1,15 +1,13 @@
 //Style
 import "../css/ItemSt.css";
 //Comp.
-import ItemCount from "./ItemCount";
 import {Link} from "react-router-dom";
 //BTS
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 
-function Item( {id, product_name, price, organic, stock,
-  itemCountInitializer, onAdd, onSubtract}) {
+function Item( {id, product_name, price, organic, stock }) {
   return (
     <>
     <Card className="productCard">
@@ -22,14 +20,6 @@ function Item( {id, product_name, price, organic, stock,
           <br />
           Stock: {stock}
         </Card.Text>
-
-        <ItemCount 
-          initial={itemCountInitializer}
-          stock={stock}
-          onAdd={onAdd}
-          onSubtract={onSubtract}/>
-
-        <Button variant="primary" className="d-inline">Agregar al carrito</Button>
         <Link to={`/item/${id}`}>
           <Button variant="info" className="mt-2">Ver detalle</Button>
         </Link>
