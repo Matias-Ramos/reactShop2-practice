@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 //comp
 import {Link} from "react-router-dom";
 
-function ItemCount({desiredAmount, stock, onAdd, onSubtract})
+function ItemCount({desiredAmount, stock, onAdd, onSubtract, addPurchase})
 {
     return (
         <>
@@ -21,7 +21,7 @@ function ItemCount({desiredAmount, stock, onAdd, onSubtract})
                     <Button variant="primary" onClick={ () => onAdd(desiredAmount, stock) }> + </Button>
                 </div>
                 <Link to={`/cart`}>
-                    <Button variant="success" className="mt-2"> Comprar! </Button>
+                    <Button variant="success" className="mt-2" onClick={ () => addPurchase(desiredAmount) }> Comprar! </Button>
                 </Link>
             </Card.Body>
         </Card>

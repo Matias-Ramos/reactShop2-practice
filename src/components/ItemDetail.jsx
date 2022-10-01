@@ -8,7 +8,7 @@ import ItemCount from "./ItemCount";
 import {useState} from "react";
 
 
-function ItemDetail({product}) {
+function ItemDetail({product, addPurchase}) {
 
     //Funciones modificadoras del ItemCount.jsx
     let onAdd = (desiredAmount, stock) => desiredAmount<stock && setDesiredAmount(desiredAmount+1);
@@ -19,7 +19,7 @@ function ItemDetail({product}) {
 
     //Variable de estado
     const [desiredAmount, setDesiredAmount] = useState(itemCountInitializer);
-    
+
     return (
         <div className="ItemDetail">
         <Card className="ItemDetailCard" style={{ width: '18rem' }}>
@@ -40,7 +40,8 @@ function ItemDetail({product}) {
                 desiredAmount={desiredAmount}
                 stock={product.stock} 
                 onAdd={onAdd}
-                onSubtract={onSubtract}/>
+                onSubtract={onSubtract}
+                addPurchase={addPurchase}/>
             </Card.Body>
         </Card>
         </div>

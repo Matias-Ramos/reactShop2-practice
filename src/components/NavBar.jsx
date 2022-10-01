@@ -11,7 +11,7 @@ import CartWidget from './CartWidget';
 import {NavLink} from "react-router-dom";
 
 
-function NavBar() {
+function NavBar(props) {
   
     return (
       <>
@@ -29,7 +29,8 @@ function NavBar() {
             </NavLink>
           </Nav>
           <NavLink to="#">
-          <img src="https://icongr.am/feather/shopping-cart.svg?size=30&color=fafafa" alt="cart Icon" />
+            <img src="https://icongr.am/feather/shopping-cart.svg?size=30&color=fafafa" alt="cart Icon" />
+            <span> {props.totalQtyBought}</span>
           </NavLink>
 
         </Container>
