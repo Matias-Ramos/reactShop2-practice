@@ -6,7 +6,7 @@ import { getProduct } from "../data/Mock_Data";
 //comp.
 import ItemDetail from "./ItemDetail";
 
-function ItemDetailContainer(props) {
+function ItemDetailContainer() {
   //usePrms
   const { productId } = useParams();
 
@@ -21,7 +21,7 @@ function ItemDetailContainer(props) {
 
   return (
     <>
-      <ItemDetail product={product} addPurchase={props.addPurchase} />
+      <ItemDetail product={product} />
     </>
   );
 }

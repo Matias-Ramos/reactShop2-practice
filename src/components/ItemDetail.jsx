@@ -5,20 +5,27 @@ import Card from 'react-bootstrap/Card';
 import ListGroup from 'react-bootstrap/ListGroup';
 //comp.
 import ItemCount from "./ItemCount";
-import {useState} from "react";
+import {useState, useContext} from "react";
+import {cartHookCtxt} from "../context/CartContext"
 
-
-function ItemDetail({product, addPurchase}) {
+function ItemDetail({product}) {
 
     //Funciones modificadoras del ItemCount.jsx
-    let onAdd = (desiredAmount, stock) => desiredAmount<stock && setDesiredAmount(desiredAmount+1);
-    let onSubtract = desiredAmount => desiredAmount>1 && setDesiredAmount(desiredAmount-1);
-
+    let onAddQty = (desiredAmount, stock) => desiredAmount<stock && setDesiredAmount(desiredAmount+1);
+    let onSubtractQty = desiredAmount => desiredAmount>1 && setDesiredAmount(desiredAmount-1);
     //Inmutabilidad del inicializador para ItemCount.jsx
     const itemCountInitializer = 1;
 
     //Variable de estado
     const [desiredAmount, setDesiredAmount] = useState(itemCountInitializer);
+
+    //contexto
+    const cartContext = useContext(cartHookCtxt);
+
+    //función intermedia para la compra del producto
+    function buyProduct () {
+        cartContext.addProductToCart(product, desiredAmount)
+    }
 
     return (
         <div className="ItemDetail">
@@ -39,9 +46,11 @@ function ItemDetail({product, addPurchase}) {
                 <ItemCount 
                 desiredAmount={desiredAmount}
                 stock={product.stock} 
-                onAdd={onAdd}
-                onSubtract={onSubtract}
-                addPurchase={addPurchase}/>
+                onAddQty={onAddQty}
+                onSubtractQty={onSubtractQty}
+                buyProduct={buyProduct}
+                />
+                
             </Card.Body>
         </Card>
         </div>

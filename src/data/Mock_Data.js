@@ -26,7 +26,7 @@ export default function getStock ()
     return new Promise ( (resolve, reject) => {
         setTimeout( () => {
             resolve (stock);
-        },1200);
+        },300);
     } );
 }
 
@@ -35,6 +35,6 @@ export function getProduct( id )
     return new Promise ( (resolve, reject) => {
         setTimeout( () => {
             resolve (stock[id]);
-        },1200);
+        },300);
     } );
 }

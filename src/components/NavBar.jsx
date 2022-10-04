@@ -9,10 +9,12 @@ import Button from 'react-bootstrap/Button';
 //comp.
 import CartWidget from './CartWidget';
 import {NavLink} from "react-router-dom";
+import {useContext} from "react";
+import {cartHookCtxt} from "../context/CartContext"
 
+function NavBar() {
+  const {productsBought} = useContext(cartHookCtxt);
 
-function NavBar(props) {
-  
     return (
       <>
       <Navbar bg="dark" variant="dark" id="navBar">
@@ -28,9 +30,9 @@ function NavBar(props) {
               <Button variant="outline-light" className="btnNavBar">Verduras</Button>
             </NavLink>
           </Nav>
-          <NavLink to="#">
+          <NavLink to="/cart">
             <img src="https://icongr.am/feather/shopping-cart.svg?size=30&color=fafafa" alt="cart Icon" />
-            <span> {props.totalQtyBought}</span>
+            <span> {productsBought}</span>
           </NavLink>
 
         </Container>
