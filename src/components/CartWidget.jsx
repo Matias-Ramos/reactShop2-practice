@@ -1,13 +1,13 @@
-import { NavLink } from "react-router-dom";
+//comp.
+import {NavLink} from "react-router-dom";
 
-function CartWidget() {
-  return (
-    <>
-      <NavLink to="/">
-        <img src="https://icongr.am/simple/aerlingus.svg?size=40&color=ebffef&colored=false" className="img-fluid" alt="Brand icon" />  
-        <span> TiendaMia </span>
-      </NavLink>
-    </>
+function CartWidget({qtyOfBoughtProducts}) {
+
+    return (
+        <NavLink to="/cart">
+            <img src="https://icongr.am/feather/shopping-cart.svg?size=30&color=fafafa" alt="cart Icon" />
+            <span> {qtyOfBoughtProducts}</span>
+        </NavLink>
     )
 }
 

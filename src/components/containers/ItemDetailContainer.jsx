@@ -2,9 +2,9 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 //data
-import { getProduct } from "../data/Mock_Data";
+import { getProduct } from "../../data/Mock_Data";
 //comp.
-import ItemDetail from "./ItemDetail";
+import ItemDetail from "../ItemDetail";
 
 function ItemDetailContainer() {
   //usePrms

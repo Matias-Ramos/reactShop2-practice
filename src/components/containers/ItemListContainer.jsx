@@ -1,9 +1,9 @@
 //style
-import "../css/itemListContainerSt.css";
+import "../../css/itemListContainerSt.css";
 //data
-import getStock from "../data/Mock_Data";
+import getStock from "../../data/Mock_Data";
 //comp.
-import ItemList from "./ItemList";
+import ItemList from "../ItemList";
 //hooks
 import {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
@@ -13,7 +13,6 @@ function ItemListContainer() {
    
   //usePrms
   const {categoryId} = useParams();
-
   //useState
   const [productList, setProductList] = useState ( [] );
   
@@ -26,19 +25,19 @@ function ItemListContainer() {
       case "fruits":
         stock.then( arrayOfProducts => 
           {
-            setProductList( arrayOfProducts.filter( product => product.isFruit) ); //t
+            setProductList( arrayOfProducts.filter( product => product.isFruit) ); //true = fruits
           })
         break;
 
       case "vegetables":
         stock.then( arrayOfProducts => 
           {
-            setProductList( arrayOfProducts.filter( product => !product.isFruit) ); //f
+            setProductList( arrayOfProducts.filter( product => !product.isFruit) ); //false = veg
           })
         break;
       
       default:
-        stock.then( arrayOfProducts => setProductList(arrayOfProducts) );
+        stock.then( arrayOfProducts => setProductList(arrayOfProducts) ); //default = all
         break;
     }
     
@@ -49,7 +48,6 @@ function ItemListContainer() {
       <ItemList productList={productList}/>
     </div>
   ) 
-
 }
 
 export default ItemListContainer;

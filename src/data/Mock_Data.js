@@ -2,7 +2,7 @@ const stock =
 [
     {"id":0,"product_name":"Higo","price":90.8,"organic":true,"description":"Una fruta blanda y de piel fina cuyo color varía de verde a morado mientras que la pulpa puede ser encarnada o blanca.","stock":10,"isFruit":true},
     
-    {"id":1,"product_name":"Tomate","price":42.9,"organic":false,"description":"Aunque botánicamente el tomate es una fruta, a efectos culinarios se le considera una hortaliza.","stock":15,"isFruit":true},
+    {"id":1,"product_name":"Tomate","price":42.9,"organic":false,"description":"Aunque botánicamente el tomate es una fruta, a efectos culinarios se le considera una hortaliza.","stock":0,"isFruit":true},
     
     {"id":2,"product_name":"Mango","price":69.9,"organic":false,"description":"Es una fruta normalmente de color verde en un principio, y amarillo, naranja e incluso rojo-granate cuando está madura, de sabor medianamente ácido cuando no ha madurado completamente","stock":2,"isFruit":true},
     
@@ -35,6 +35,6 @@ export function getProduct( id )
     return new Promise ( (resolve, reject) => {
         setTimeout( () => {
             resolve (stock[id]);
-        },300);
+        },1200);
     } );
 }
