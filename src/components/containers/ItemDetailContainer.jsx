@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 //data
-import { getProduct } from "../../data/Mock_Data";
+import { getProduct } from "../../data/firestore";
 //comp.
 import ItemDetail from "../ItemDetail";
 
@@ -15,8 +15,7 @@ function ItemDetailContainer() {
 
   //value from database into state-var
   useEffect(() => {
-    const item = getProduct(productId);
-    item.then((item) => setProduct(item));
+    getProduct(productId).then( item => setProduct(item));
   }, [productId]);
 
   return (

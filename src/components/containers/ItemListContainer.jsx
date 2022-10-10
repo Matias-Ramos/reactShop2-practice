@@ -1,7 +1,7 @@
 //style
 import "../../css/itemListContainerSt.css";
 //data
-import getStock from "../../data/Mock_Data";
+import { getStock, getStockByCat} from "../../data/firestore";
 //comp.
 import ItemList from "../ItemList";
 //hooks
@@ -10,34 +10,26 @@ import {useParams} from "react-router-dom";
 
 
 function ItemListContainer() {
-   
+  
   //usePrms
   const {categoryId} = useParams();
   //useState
   const [productList, setProductList] = useState ( [] );
   
   useEffect( () => {
-    const stock = getStock(); //this returns a promise...
 
-    //conditional to define which values from the promise assign into the state-variable.
-    switch(categoryId)
+    switch(categoryId) //conditional to define which values from the promise assign into the state-variable.
     {
       case "fruits":
-        stock.then( arrayOfProducts => 
-          {
-            setProductList( arrayOfProducts.filter( product => product.isFruit) ); //true = fruits
-          })
+        getStockByCat("fruits").then( arrayOfProducts => setProductList(arrayOfProducts) );
         break;
 
       case "vegetables":
-        stock.then( arrayOfProducts => 
-          {
-            setProductList( arrayOfProducts.filter( product => !product.isFruit) ); //false = veg
-          })
+        getStockByCat("vegetables").then( arrayOfProducts => setProductList(arrayOfProducts) );
         break;
       
       default:
-        stock.then( arrayOfProducts => setProductList(arrayOfProducts) ); //default = all
+        getStock().then( arrayOfProducts => setProductList(arrayOfProducts) );
         break;
     }
     
