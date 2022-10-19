@@ -9,6 +9,7 @@ import Button from 'react-bootstrap/Button';
 import HomeWidget from './HomeWidget';
 import CartWidget from './CartWidget';
 import {NavLink} from "react-router-dom";
+//hook
 import {useContext} from "react";
 import {cartHookCtxt} from "../context/CartContext"
 
@@ -33,6 +34,7 @@ function NavBar() {
             </NavLink>
           </Nav>
           {
+            //mostrar CartWidget solamente si hay productos comprados
             qtyOfBoughtProducts>0 &&
             <CartWidget qtyOfBoughtProducts={qtyOfBoughtProducts} />
           }

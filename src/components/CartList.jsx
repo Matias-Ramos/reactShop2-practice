@@ -1,5 +1,6 @@
 //Comp
 import Item from "./Item";
+import CartBtnPurchaseConf from "./buttons/CartBtnPurchaseConf";
 //Btsp
 import Button from 'react-bootstrap/Button';
 
@@ -10,7 +11,10 @@ function CartList({cart, clearCart, totalExpense}) {
         <h2>Total a abonar: ${totalExpense}</h2>
 
         { cart.length>0 && 
-        <Button variant="danger" className="mb-2" onClick={ () => clearCart() } >Vaciar carrito ☠</Button>
+        <>
+          <Button variant="danger" className="m-2" onClick={ () => clearCart() } >Vaciar carrito ☠</Button>
+          <CartBtnPurchaseConf cart={cart}/>
+        </>
         }
 
         { 

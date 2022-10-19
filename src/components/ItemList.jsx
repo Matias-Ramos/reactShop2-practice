@@ -1,4 +1,4 @@
-//Componente de presentación
+//Presentational component
 import Item from "./Item";
 
 function ItemList( {productList} ) {

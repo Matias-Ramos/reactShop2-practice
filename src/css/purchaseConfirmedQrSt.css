@@ -1,0 +1,5 @@
+/* Da un alto y ancho fijo para que cuando el qr cargue, no mueva al h1 y su span de lugar. */
+#qrCodeContainer{
+    height: 102px;
+    width: 102px;
+}

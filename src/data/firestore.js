@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs, doc, getDoc, query, where } from "firebase/firestore"
+import { getFirestore, collection, getDocs, doc, getDoc, query, where, addDoc } from "firebase/firestore"
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,7 +17,7 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firestore
 const myFirestore = getFirestore(app);
 
-//All items
+//exports all items
 export async function getStock(){
   const myCollection = collection(myFirestore, "Comestibles");
   let snapShot = await getDocs(myCollection);
@@ -29,7 +29,7 @@ export async function getStock(){
   return arrayOfProducts;
 }
 
-//Single item
+//exports a single item
 export async function getProduct(idParams){
   const docRef = doc( myFirestore, "Comestibles", idParams );
   const docSnapShot = await getDoc(docRef);
@@ -38,7 +38,7 @@ export async function getProduct(idParams){
   return formattedDoc; 
 }
 
-//Items by category
+//exports items by category
 export async function getStockByCat(category){
   category==="fruits"? category=true : category=false;
   const myCollection = collection(myFirestore, "Comestibles");
@@ -50,4 +50,12 @@ export async function getStockByCat(category){
     })
 
   return arrayOfProducts;
+}
+
+//creates a purchase order
+export async function createPurchaseOrder(purchaseData)
+{
+  const collectionRef = collection(myFirestore, "Purchases"); //si la colección no existe, se crea.
+  let httpResponse = await addDoc(collectionRef, purchaseData);
+  return httpResponse;
 }

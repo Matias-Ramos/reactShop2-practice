@@ -7,7 +7,6 @@ import {Link} from "react-router-dom";
 //Btsp
 import Button from 'react-bootstrap/Button';
 
-
 function CartContainer() {
   
   const {cart, clearCart, totalExpense} = useContext(cartHookCtxt);

@@ -1,0 +1,20 @@
+/* Centra verticalmente los datos del ticket */
+.h2purchaseConf, .dataPurchaseConf{
+    display:flex;
+    align-items: center;
+}
+
+/* Centra verticalmente al #btnsPurchaseConfirmedOuterContainer */
+#purchaseContainer{
+    display: flex;
+    align-items: center;
+}
+
+/* Pone al #purchaseTicket y al container de botones uno al lado del otro */
+#btnsPurchaseConfirmedOuterContainer, #purchaseTicket{display: inline-block;}
+
+/* Pone a los botones en columna y no en fila */
+#btnsPurchaseConfirmedInnerContainer{
+    display: flex;
+    flex-direction: column;
+}

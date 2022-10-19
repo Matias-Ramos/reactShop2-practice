@@ -20,9 +20,10 @@ function ItemDetail({product}) {
     //Funciones modificadoras del ItemCount.jsx
     let onAddQty = (desiredAmount, stock) => desiredAmount<stock && setDesiredAmount(desiredAmount+1);
     let onSubtractQty = desiredAmount => desiredAmount>1 && setDesiredAmount(desiredAmount-1);
+
     //Inmutabilidad del inicializador para ItemCount.jsx
     const itemCountInitializer = 1;
-
+    
     //Variable de estado
     const [desiredAmount, setDesiredAmount] = useState(itemCountInitializer);
     const [buyConfirmed, setBuyConfirmed] = useState(false);
