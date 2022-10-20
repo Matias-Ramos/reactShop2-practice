@@ -1,53 +1,51 @@
 //style
 import "../../css/itemListContainerSt.css";
 //data
-import { getStock, getStockByCat} from "../../data/firestore";
+import { getStock, getStockByCat } from "../../data/firestore";
 //comp.
 import ItemList from "../ItemList";
 //hooks
-import {useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function ItemListContainer() {
-  
   //usePrms
-  const {categoryId} = useParams();
+  const { categoryId } = useParams();
   //useState
-  const [productList, setProductList] = useState ( [] );
-  
-  useEffect( () => {
+  const [productList, setProductList] = useState([]);
 
-    switch(categoryId) //conditional to define which values from the promise assign into the state-variable.
-    {
+  useEffect(() => {
+    switch (
+      categoryId //conditional to define which values from the promise assign into the state-variable.
+    ) {
       case "fruits":
-        getStockByCat("fruits").then( arrayOfProducts => setProductList(arrayOfProducts) );
+        getStockByCat("fruits").then((arrayOfProducts) =>
+          setProductList(arrayOfProducts)
+        );
         break;
 
       case "vegetables":
-        getStockByCat("vegetables").then( arrayOfProducts => setProductList(arrayOfProducts) );
+        getStockByCat("vegetables").then((arrayOfProducts) =>
+          setProductList(arrayOfProducts)
+        );
         break;
-      
+
       default:
-        getStock().then( arrayOfProducts => setProductList(arrayOfProducts) );
+        getStock().then((arrayOfProducts) => setProductList(arrayOfProducts));
         break;
     }
-    
-  } ,[categoryId] )
+  }, [categoryId]);
 
   return (
     <div id="itemListContainer">
-      <ItemList productList={productList}/>
+      <ItemList productList={productList} />
     </div>
-  ) 
+  );
 }
 
 export default ItemListContainer;
 
-
-
-
-  //ASYNC AWAIT VERSION
+//ASYNC AWAIT VERSION
 /*   useEffect( () => {
     getData2();
   },[] )

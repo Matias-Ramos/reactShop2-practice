@@ -7,15 +7,15 @@ import { getProduct } from "../../data/firestore";
 import ItemDetail from "../ItemDetail";
 
 function ItemDetailContainer() {
+  
   //usePrms
   const { productId } = useParams();
-
   //useSt
   const [product, setProduct] = useState({});
 
   //value from database into state-var
   useEffect(() => {
-    getProduct(productId).then( item => setProduct(item));
+    getProduct(productId).then((item) => setProduct(item));
   }, [productId]);
 
   return (

@@ -1,20 +1,20 @@
 //BTS
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
-function PurchaseConfirmedDate( {getDate} ) {
+function PurchaseConfirmedDate({ getDate }) {
   return (
     <>
-    <Row>
+      <Row>
         <Col lg={5} xl={5} className="h2purchaseConf">
-            <h2>Fecha: </h2>
+          <h2>Fecha: </h2>
         </Col>
         <Col className="dataPurchaseConf">
-            <span>{ getDate() }</span>
+          <span>{getDate()}</span>
         </Col>
-    </Row>
+      </Row>
     </>
-  )
+  );
 }
 
-export default PurchaseConfirmedDate
+export default PurchaseConfirmedDate;

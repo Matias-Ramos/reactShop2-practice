@@ -10,42 +10,26 @@ function CartContextProvider (props)
     
     function addProductToCart( product, desiredAmount )
     {
-        //si es el primer producto...
-        if(cart.length===0)
+        
+        if(cart.length===0) //if this is the first product
         {
-            //creá la propiedad desiredAmount en el objeto product
-            product.desiredAmount = desiredAmount;
-            //y subí el objeto al array cart
+            product.desiredAmount = desiredAmount; //create desiredAmount property in the product obj
             setCart( [product] );
         }
-        
-        //si ya existían productos en el carrito
         else
         {
-            //si este específico producto ya existe en el carrito
-            if( cart.some( item => item.id === product.id ) )
+            if( cart.some( item => item.id === product.id ) ) //if this specific product already existed in the cart
             {
-                /*conseguí la index-position del elemento cuya propiedad ID 
-                sea igual a la del producto que desea ser actualizar*/
-                const position = cart.map( element => element.id ).indexOf(product.id)
-                //creá una copia del cart
-                const auxArray = cart.concat();
-                //en esa copia, sumá la cantidad de productos que ya querían con la que acaban de agregar
-                auxArray[position].desiredAmount += desiredAmount;
-                //y actualizá el carrito
-                setCart(auxArray);
+                const position = cart.map( element => element.id ).indexOf(product.id) /*get the index-position of the element with same ID as the product that is being re-purchased.*/                
+                const auxArray = [...cart];
+                auxArray[position].desiredAmount += desiredAmount; //in the cart copy, sum the qty of products already there with the amount that the user have just added.
+                setCart(auxArray); 
             }
-
-            //si este específico producto no existía en el carrito
             else
             {
-                //creá la propiedad desiredAmount en el objeto product
-                product.desiredAmount = desiredAmount;
-                //creá una copia del cart
-                const auxArray = cart.concat();
-                //pusheá el producto en la copia
+                product.desiredAmount = desiredAmount; //create desiredAmount property in the product obj
+                const auxArray = [...cart];
                 auxArray.push(product)
-                //y actualizá el carrito
                 setCart(auxArray);
             }
         }
@@ -53,14 +37,9 @@ function CartContextProvider (props)
 
     function clearProductFromCart(id)
     {
-        /*conseguí la index-position del elemento cuya propiedad ID 
-        sea igual a la del producto que desea eliminarse */
-        const position = cart.map( element => element.id ).indexOf(id);
-        //creá una copia del cart
-        const auxArray = cart.concat();
-        //en esa copia, eliminá al producto
+        const position = cart.map( element => element.id ).indexOf(id); /*get the index-position of the element with same ID as the product that is to be deleted.*/
+        const auxArray = [...cart];
         auxArray.splice( position, 1 );
-        //actualizá el carrito
         setCart(auxArray);
     }
 
@@ -68,27 +47,22 @@ function CartContextProvider (props)
         setCart( [] );
     }
     
-    function productAmountUpdate(id) //...from cartContainer.
+    function productAmountReduce(id)
     {
-        /*conseguí la index-position del elemento cuya propiedad ID 
-        sea igual a la del producto que desea eliminarse */
-        const position = cart.map( element => element.id ).indexOf(id);
-        //creá una copia del cart
-        const auxArray = cart.concat();
-        //en esa copia, modificá la variable desiredAmount en 1.
+        const position = cart.map( element => element.id ).indexOf(id); /*get the index-position of the element with same ID as the product that is to be reduced.*/
+        const auxArray = [...cart];
         auxArray[position].desiredAmount -= 1
-        //actualizá el carrito
         setCart(auxArray);
     }
     
-    useEffect( () => //cada vez que muta el estado cart.
+    useEffect( () => //each time the cart state changes...
 	{
-        //actualiza el estado totalExpense
+        //update totalExpense state
         let expenseSum = cart.reduce ( (accumulator, purchase) => 
-        accumulator + (purchase.price * purchase.desiredAmount), 0 ) //por cada compra ->  (acumulador + (precio * cantidad de productos comprados).
+        accumulator + (purchase.price * purchase.desiredAmount), 0 )
         setTotalExpense(expenseSum.toFixed(2));
 
-        //actualiza el estado qtyOfBoughtProducts
+        //update qtyOfBoughtProducts state 
         let productQty = cart.reduce ( (accumulator, purchase) => 
         accumulator + purchase.desiredAmount, 0 );
         setqtyOfBoughtProducts(productQty);
@@ -100,7 +74,7 @@ function CartContextProvider (props)
             addProductToCart,
             clearProductFromCart,
             clearCart,
-            productAmountUpdate,
+            productAmountReduce,
             totalExpense,
             qtyOfBoughtProducts,
             cart}}>

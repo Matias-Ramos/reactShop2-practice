@@ -3,11 +3,8 @@ import "../../css/purchaseConfirmedContainer.css"
 
 //hooks
 import {useParams} from "react-router-dom";
-import {useContext} from "react";
 import {cartHookCtxt} from "../../context/CartContext"
-import { useEffect } from "react";
-import { useState } from "react";
-import { useRef } from 'react';
+import { useContext, useEffect, useState, useRef } from "react";
 
 //BTS
 import Container from 'react-bootstrap/Container';
@@ -40,8 +37,8 @@ function PurchaseConfirmedContainer() {
         return today;
     }
 
-    /*Este componente, al ser renderizado, vacía el carrito 
-    (ya que la compra fue completada y debidamente duplicada para su actual renderización).*/
+    /*This component, when renderized, empties the cart. 
+    (bc the purchase is now finished and also bc such purchase has been properly duplicated to be render within this comp).*/
     useEffect( () => {
         clearCart();
     }, [] )

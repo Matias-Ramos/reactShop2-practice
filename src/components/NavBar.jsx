@@ -1,22 +1,20 @@
 //style
 import "../css/navBarSt.css";
 //bts
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Button from 'react-bootstrap/Button';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Button from "react-bootstrap/Button";
 //comp.
-import HomeWidget from './HomeWidget';
-import CartWidget from './CartWidget';
-import {NavLink} from "react-router-dom";
+import HomeWidget from "./HomeWidget";
+import CartWidget from "./CartWidget";
+import { NavLink } from "react-router-dom";
 //hook
-import {useContext} from "react";
-import {cartHookCtxt} from "../context/CartContext"
-
+import { useContext } from "react";
+import { cartHookCtxt } from "../context/CartContext";
 
 function NavBar() {
-
-  const {qtyOfBoughtProducts} = useContext(cartHookCtxt);
+  const { qtyOfBoughtProducts } = useContext(cartHookCtxt);
 
   return (
     <>
@@ -27,23 +25,26 @@ function NavBar() {
           </Navbar.Brand>
           <Nav className="me-auto">
             <NavLink to="/category/fruits">
-              <Button variant="outline-light" className="btnNavBar">Frutas</Button>
+              <Button variant="outline-light" className="btnNavBar">
+                Frutas
+              </Button>
             </NavLink>
             <NavLink to="/category/vegetables">
-              <Button variant="outline-light" className="btnNavBar">Verduras</Button>
+              <Button variant="outline-light" className="btnNavBar">
+                Verduras
+              </Button>
             </NavLink>
           </Nav>
           {
-            //mostrar CartWidget solamente si hay productos comprados
-            qtyOfBoughtProducts>0 &&
-            <CartWidget qtyOfBoughtProducts={qtyOfBoughtProducts} />
+            //shows CartWidget.jsx only if one or more products have been bought.
+            qtyOfBoughtProducts > 0 && (
+              <CartWidget qtyOfBoughtProducts={qtyOfBoughtProducts} />
+            )
           }
         </Container>
       </Navbar>
     </>
   );
 }
-
-
 
 export default NavBar;
