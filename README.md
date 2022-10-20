@@ -1,3 +1,6 @@
+## Deploy link
+https://6351634ee53b07492c857c65--incomparable-fairy-39a614.netlify.app/
+
 ## Reason for this project
 
 react-shop-2 is the second edition of a react app that was made to pass the third module of my full-stack career at CoderHouse. Features are still remaining for this project to be a full shop, nonetheless it's many actual features helped me understand react fundamentals.
