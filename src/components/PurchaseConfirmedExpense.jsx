@@ -10,7 +10,7 @@ function PurchaseConfirmedExpense({ finalExpense }) {
           <h2>Total a abonar: </h2>
         </Col>
         <Col className="dataPurchaseConf">
-          <span>${finalExpense}</span>
+          <span>${ finalExpense }</span>
         </Col>
       </Row>
     </>

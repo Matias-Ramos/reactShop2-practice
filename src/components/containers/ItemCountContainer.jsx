@@ -20,7 +20,9 @@ function ItemCountContainer({
       style={{ display: "inline-block" }}
     >
       <Card.Body>
-        {buyConfirmed === false ? (
+        {
+        buyConfirmed === false ? 
+        (
           <ItemCount
             desiredAmount={desiredAmount}
             stock={stock}

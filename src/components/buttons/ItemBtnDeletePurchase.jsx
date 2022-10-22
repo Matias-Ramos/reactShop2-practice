@@ -1,12 +1,6 @@
-//Context
-import { useContext } from "react";
-import { cartHookCtxt } from "../../context/CartContext";
-//BTS
 import Button from "react-bootstrap/Button";
 
-function ItemBtnDeletePurchase({ id }) {
-  const { clearProductFromCart } = useContext(cartHookCtxt);
-
+function ItemBtnDeletePurchase({ id, clearProductFromCart }) {
   return (
     <Button
       variant="secondary"

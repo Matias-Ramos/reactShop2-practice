@@ -55,7 +55,7 @@ export async function getStockByCat(category){
 //creates a purchase order
 export async function createPurchaseOrder(purchaseData)
 {
-  const collectionRef = collection(myFirestore, "Purchases"); //si la colección no existe, se crea.
+  const collectionRef = collection(myFirestore, "Purchases"); //if collection doesn't exists, it is created automatically.
   let httpResponse = await addDoc(collectionRef, purchaseData);
   return httpResponse;
 }

@@ -13,19 +13,19 @@ function ItemCount({
   return (
     <>
       <div>
+
         <Button variant="primary" onClick={() => onSubtractQty(desiredAmount)}>
-          {" "}
-          -{" "}
+          {" "} - {" "}
         </Button>
+
         <span className="desiredAmountSpan"> {desiredAmount} </span>
-        <Button
-          variant="primary"
-          onClick={() => onAddQty(desiredAmount, stock)}
-        >
-          {" "}
-          +{" "}
+
+        <Button variant="primary" onClick={() => onAddQty(desiredAmount, stock)} >
+          {" "} + {" "}
         </Button>
+
       </div>
+      
       <Button variant="success" className="mt-2" onClick={() => buyProduct()}>
         Comprar!
       </Button>

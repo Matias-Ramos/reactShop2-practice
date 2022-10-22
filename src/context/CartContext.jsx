@@ -1,12 +1,10 @@
-import { createContext, useState, useEffect} from "react";
+import { createContext, useState} from "react";
 
 const cartHookCtxt = createContext();
 
 function CartContextProvider (props)
 {
     const [cart, setCart] = useState( [] );
-    const [qtyOfBoughtProducts, setqtyOfBoughtProducts] = useState( 0 );
-    const [totalExpense, setTotalExpense] = useState( 0 );
     
     function addProductToCart( product, desiredAmount )
     {
@@ -47,7 +45,7 @@ function CartContextProvider (props)
         setCart( [] );
     }
     
-    function productAmountReduce(id)
+    function reduceProductAmountByOne(id)
     {
         const position = cart.map( element => element.id ).indexOf(id); /*get the index-position of the element with same ID as the product that is to be reduced.*/
         const auxArray = [...cart];
@@ -55,28 +53,41 @@ function CartContextProvider (props)
         setCart(auxArray);
     }
     
-    useEffect( () => //each time the cart state changes...
-	{
-        //update totalExpense state
-        let expenseSum = cart.reduce ( (accumulator, purchase) => 
+    function calculateTotalExpense(userCart)
+    {
+        let expenseSum = userCart.reduce ( (accumulator, purchase) => 
         accumulator + (purchase.price * purchase.desiredAmount), 0 )
-        setTotalExpense(expenseSum.toFixed(2));
+        return ( expenseSum.toFixed(2) );
+    }
 
-        //update qtyOfBoughtProducts state 
+    function calculateQtyOfBoughtProducts()
+    {
         let productQty = cart.reduce ( (accumulator, purchase) => 
         accumulator + purchase.desiredAmount, 0 );
-        setqtyOfBoughtProducts(productQty);
-    }, 
-    [cart] );
+        return productQty;
+    }
+
+	// {
+    //     //update totalExpense state
+    //     let expenseSum = cart.reduce ( (accumulator, purchase) => 
+    //     accumulator + (purchase.price * purchase.desiredAmount), 0 )
+    //     setTotalExpense(expenseSum.toFixed(2));
+
+    //     //update qtyOfBoughtProducts state 
+    //     let productQty = cart.reduce ( (accumulator, purchase) => 
+    //     accumulator + purchase.desiredAmount, 0 );
+    //     setqtyOfBoughtProducts(productQty);
+    // }, 
+    // [cart] );
 
     return(
         <cartHookCtxt.Provider value={{
             addProductToCart,
             clearProductFromCart,
             clearCart,
-            productAmountReduce,
-            totalExpense,
-            qtyOfBoughtProducts,
+            reduceProductAmountByOne,
+            calculateTotalExpense,
+            calculateQtyOfBoughtProducts,
             cart}}>
 
             {props.children}

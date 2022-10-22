@@ -4,7 +4,7 @@ import CartBtnPurchaseConf from "./buttons/CartBtnPurchaseConf";
 //Btsp
 import Button from "react-bootstrap/Button";
 
-function CartList({ cart, clearCart, totalExpense }) {
+function CartList({ cart, clearCart, totalExpense, confirmPurchase }) {
   return (
     <>
       <br />
@@ -15,7 +15,7 @@ function CartList({ cart, clearCart, totalExpense }) {
           <Button variant="danger" className="m-2" onClick={() => clearCart()}>
             Vaciar carrito ☠
           </Button>
-          <CartBtnPurchaseConf cart={cart} />
+          <CartBtnPurchaseConf confirmPurchase={confirmPurchase} />
         </>
       )}
 

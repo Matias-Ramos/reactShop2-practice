@@ -7,10 +7,8 @@ import { getProduct } from "../../data/firestore";
 import ItemDetail from "../ItemDetail";
 
 function ItemDetailContainer() {
-  
-  //usePrms
+
   const { productId } = useParams();
-  //useSt
   const [product, setProduct] = useState({});
 
   //value from database into state-var
@@ -19,9 +17,7 @@ function ItemDetailContainer() {
   }, [productId]);
 
   return (
-    <>
       <ItemDetail product={product} />
-    </>
   );
 }
 

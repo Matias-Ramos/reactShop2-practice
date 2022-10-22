@@ -1,17 +1,11 @@
-//BTS
 import Button from "react-bootstrap/Button";
-//Context
-import { useContext } from "react";
-import { cartHookCtxt } from "../../context/CartContext";
 
-function ItemBtnRdceAmount({ id }) {
-  const { productAmountReduce } = useContext(cartHookCtxt);
-
+function ItemBtnRdceAmount({ id, reduceProductAmountByOne }) {
   return (
     <Button
       variant="info"
       className="m-2"
-      onClick={() => productAmountReduce(id)}
+      onClick={() => reduceProductAmountByOne(id)}
     >
       Reducir cantidad en 1
     </Button>

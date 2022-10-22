@@ -17,11 +17,10 @@ function Item({ id, product_name, price, organic, stock, desiredAmount }) {
             Orgánico: {organic ? "✔" : "❌"}
             <br />
             {
-              desiredAmount !== undefined ? (
-                <span>Cantidad: {desiredAmount}</span> //desiredAmount truthy = CartContainer route
-              ) : (
-                <span>Stock: {stock}</span>
-              ) //desiredAmount falsy = ItemListContainer route
+              desiredAmount !== undefined ? 
+              ( <span>Cantidad: {desiredAmount}</span> ) //desiredAmount undefined = CartContainer route
+              : 
+              ( <span>Stock: {stock}</span> ) //desiredAmount !undefined = ItemListContainer route
             }
             <br />
             <ItemBtnsContainer

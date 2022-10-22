@@ -15,9 +15,8 @@ function ItemListContainer() {
   const [productList, setProductList] = useState([]);
 
   useEffect(() => {
-    switch (
-      categoryId //conditional to define which values from the promise assign into the state-variable.
-    ) {
+    switch ( categoryId ) //conditional to define which values from the promise assign into the state-variable.
+    { 
       case "fruits":
         getStockByCat("fruits").then((arrayOfProducts) =>
           setProductList(arrayOfProducts)
@@ -44,20 +43,3 @@ function ItemListContainer() {
 }
 
 export default ItemListContainer;
-
-//ASYNC AWAIT VERSION
-/*   useEffect( () => {
-    getData2();
-  },[] )
-
-  async function getData2()
-  {
-    try{
-      let promiseAnswer = await getStock();
-      setProductList(promiseAnswer);
-    }
-    catch (errorMsg) {
-      console.error(errorMsg);
-    }
-
-  } */

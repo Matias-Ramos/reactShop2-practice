@@ -21,29 +21,24 @@ import PurchaseConfirmedExpense from "../PurchaseConfirmedExpense";
 
 function PurchaseConfirmedContainer() {  
 
-    //ctxt
-    const {cart, totalExpense, clearCart} = useContext(cartHookCtxt);
-    //url-params
+    //hooks
+    const purchaseTicketRef = useRef();   
+    const {cart, clearCart, calculateTotalExpense} = useContext(cartHookCtxt);
     const {orderId} = useParams();
-    //state
     const [ finalPurchaseDetail ] = useState ( cart );
-    const [ finalExpense ] = useState ( totalExpense );
-    //ref
-    const purchaseTicketRef = useRef();
-
-    //functions
+    //local
     function getDate() {
         const today = new Date().toLocaleDateString();
         return today;
     }
-
+    const finalExpense = calculateTotalExpense(finalPurchaseDetail)
     /*This component, when renderized, empties the cart. 
-    (bc the purchase is now finished and also bc such purchase has been properly duplicated to be render within this comp).*/
+    (bc the purchase is now finished and also bc such purchase has been properly duplicated to be rendered within this comp).*/
     useEffect( () => {
         clearCart();
     }, [] )
-    
-    return (        
+
+    return (
         <>
         <div id="purchaseContainer">
             <Container ref={purchaseTicketRef} className="square border border-dark rounded m-2 w-75" id="purchaseTicket"> 
